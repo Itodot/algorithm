@@ -16,11 +16,11 @@ class Shred:
         __str__():
             返回Shred对象的字符串表示。
     """
-    def __init__(self, index, total, payload,signing_key):
+    def __init__(self, index, total, payload):
         self.index = index
         self.total = total
         self.payload = payload
-        self.signature = self.sign_shred(signing_key)
+        self.signature = ""
         
     def sign_shred(self, signing_key):
         """
@@ -34,7 +34,7 @@ class Shred:
         """
         """对Shred头部和数据进行签名"""
         message = f"{self.index}|{self.total}|{self.payload}".encode()
-        return signing_key.sign(message).signature
+        self.signature=signing_key.sign(message).signature
     
     def verify_shred(self, verify_key):
         """

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sync;
+// 定义服务
+service StreamService {
+    rpc BiStream (stream SyncRequest) returns (stream SyncResponse);
+}
+
+
+// 定义请求和响应消息
+message SyncRequest {
+    int32 node_id = 1;
+    string data = 2;
+}
+
+message SyncResponse {
+    bool success = 1;
+    string data = 2;
+}
