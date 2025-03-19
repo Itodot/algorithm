@@ -77,6 +77,13 @@ print(f"签名验证结果: {is_valid}")
 pip install pynacl
 ```
 
+## 算法流程图
+
+![alt text](../img/turbine-4.png)
+![alt text](../img/turbine-3.png)
+![alt text](../img/turbine-1.png)
+![alt text](../img/turbine-2.png)
+
 ## 许可证
 
 此项目使用 MIT 许可证。详情请参阅 LICENSE 文件。
