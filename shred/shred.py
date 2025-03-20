@@ -1,3 +1,4 @@
+import base58
 class Shred:    
     """
     Shred类表示一个数据分片，并提供签名和验证功能。
@@ -34,7 +35,8 @@ class Shred:
         """
         """对Shred头部和数据进行签名"""
         message = f"{self.index}|{self.total}|{self.payload}".encode()
-        self.signature=signing_key.sign(message).signature
+        signature_data=signing_key.sign(message).signature
+        self.signature=base58.b58encode(signature_data).decode()
     
     def verify_shred(self, verify_key):
         """
@@ -49,7 +51,8 @@ class Shred:
         """验证签名"""
         message = f"{self.index}|{self.total}|{self.payload}".encode()
         try:
-            verify_key.verify(message, self.signature)
+            verify_signature=base58.b58decode(self.signature)
+            verify_key.verify(message, verify_signature)
             return True
         except:
             return False
