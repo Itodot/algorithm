@@ -126,7 +126,10 @@ if __name__ == "__main__":
 
 2. 启动 gRPC 服务器：
    ```sh
-   python README.md
+   python -m turbine.leader
+   ```
+   ```sh
+   python -m turbine.validator
    ```
 
 ## 配置文件
